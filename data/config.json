@@ -1,0 +1,10 @@
+[
+    {
+        "step": "version",
+        "description": "Vérification de la version du forum.",
+        "part": "themes",
+        "sub": "styles",
+        "mode": "version",
+        "formData": [{ "name": "tpl", "value": "modernbb" }]
+    }
+]

@@ -1,19 +1,51 @@
 import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
+import { InstallButton } from "./installButton";
 
-  return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>CLICK ME {count}</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
-  );
+/*
+createStore({
+    steps: {
+        setup: {
+            label: "Setup",
+            percent: 0,
+            items: [],
+        },
+        config: {
+            label: "Configuration",
+            percent: 0,
+            items: [],
+        },
+        install: {
+            label: "Templates",
+            percent: 0,
+            items: [],
+        },
+        css: {
+            label: "CSS",
+            percent: 0,
+            items: [],
+        },
+        scripts: {
+            label: "Scripts & Plugins",
+            percent: 0,
+            items: [],
+        },
+    },
+});
+*/
+
+function App() {
+    return (
+        <>
+            <h1>Vite + React</h1>
+            <div className="card">
+                <InstallButton />
+                <p>
+                    Edit <code>src/App.jsx</code> and save to test HMR
+                </p>
+            </div>
+        </>
+    );
 }
 
 export default App;
