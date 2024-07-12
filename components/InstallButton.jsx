@@ -1,4 +1,4 @@
-import TEMPLATES from "@/data/templates.json";
+import TEMPLATES from "@/data/install.json";
 import CONFIG from "@/data/config.json";
 import { getRepoFileContent } from "@/lib/API";
 
