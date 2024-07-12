@@ -23,14 +23,12 @@ const initialize = async () => {
         });
 
     if (!admin_keys) throw "must be logged and admin";
-
-    getRepoFileContent("!Feuille%20de%20style%20CSS.css");
 };
 
-export const InstallButton = function () {
+export const InstallButton = function ({ children }) {
     return (
         <>
-            <button onClick={initialize}>Commencer</button>
+            <button onClick={initialize}>{children}</button>
         </>
     );
 };
