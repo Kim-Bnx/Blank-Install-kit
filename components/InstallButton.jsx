@@ -23,6 +23,17 @@ const initialize = async () => {
         });
 
     if (!admin_keys) throw "must be logged and admin";
+
+    /* setup */
+    await initSetup(admin_keys);
+    /* config */
+    await initConfig(admin_keys);
+    /* install */
+    await initInstall(admin_keys);
+    /* css */
+    await initCSS(admin_keys);
+    /* scripts */
+    await initScripts(admin_keys);
 };
 
 export const InstallButton = function ({ children }) {
