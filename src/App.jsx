@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { InstallButton } from "./components/installButton";
+import { InstallButton } from "@/components/InstallButton";
 
 /*
 createStore({
