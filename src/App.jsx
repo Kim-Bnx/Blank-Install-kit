@@ -1,51 +1,32 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import Home from "./pages/Home";
+import ConfigStep from "./pages/ConfigStep";
+import InstallStep from "./pages/InstallStep";
 
-import { InstallButton } from "./installButton";
+const App = () => {
+    const [step, setStep] = useState("home");
+    const [selectedTemplates, setSelectedTemplates] = useState([]);
+    const [selectedScripts, setSelectedScripts] = useState([]);
 
-/*
-createStore({
-    steps: {
-        setup: {
-            label: "Setup",
-            percent: 0,
-            items: [],
-        },
-        config: {
-            label: "Configuration",
-            percent: 0,
-            items: [],
-        },
-        install: {
-            label: "Templates",
-            percent: 0,
-            items: [],
-        },
-        css: {
-            label: "CSS",
-            percent: 0,
-            items: [],
-        },
-        scripts: {
-            label: "Scripts & Plugins",
-            percent: 0,
-            items: [],
-        },
-    },
-});
-*/
+    const goToConfig = () => setStep("config");
+    const goToInstall = (templates, scripts) => {
+        setSelectedTemplates(templates);
+        setSelectedScripts(scripts);
+        setStep("install");
+    };
 
-function App() {
     return (
-        <>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <InstallButton />
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
-            </div>
-        </>
+        <div>
+            {step === "home" && <Home onStart={goToConfig} />}
+            {step === "config" && <ConfigStep onNext={goToInstall} />}
+            {step === "install" && (
+                <InstallStep
+                    selectedTemplates={selectedTemplates}
+                    selectedScripts={selectedScripts}
+                />
+            )}
+        </div>
     );
-}
+};
 
 export default App;
