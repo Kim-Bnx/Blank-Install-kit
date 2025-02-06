@@ -16,7 +16,7 @@ const App = () => {
     };
 
     return (
-        <div>
+        <div className="indstall-container">
             {step === "home" && <Home onStart={goToConfig} />}
             {step === "config" && <ConfigStep onNext={goToInstall} />}
             {step === "install" && (

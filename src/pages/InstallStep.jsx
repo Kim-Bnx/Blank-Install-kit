@@ -15,7 +15,7 @@ const InstallStep = ({ selectedTemplates, selectedScripts }) => {
     });
 
     return (
-        <div>
+        <div className="indstall-step">
             <h1>Installation en cours...</h1>
             <WizardStep
                 title="CSS"

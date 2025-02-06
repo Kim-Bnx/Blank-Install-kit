@@ -1,9 +1,114 @@
-#blank-theme-installer {
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+:root {
+    color-scheme: light;
+    --header: url("https://images2.imgbox.com/e5/fb/TTqPoDcu_o.png");
+
+    --neutral: #fafbfc;
+    --neutralDark: #f2f4f9;
+    --neutralDarker: #dce3f4;
+
+    --contrast: #171938;
+    --contrastLight: #232657;
+    --contrastLighter: #c3c8f3;
+
+    --accentClr: #4b57c5;
+    --accentClrDark: #333c92;
+
+    --textColor: #232657;
+    --textColorAccent: #000;
+
+    --border: 1px solid #e5e5e5;
+
+    --shadowBox: 0 0 20px #23265730;
+
+    --little-size: 12px;
+    --normal-size: 14px;
+    --medium-size: 16px;
+    --large-size: 18px;
+    --title-size: 22px;
+    --large-radius: 15px;
+
+    --font: "Open Sans";
+    --title-font: "Lato";
+}
+
+/* VARIABLES DU MODE INVERSE (ici sombre) */
+[data-color-scheme="dark"] {
+    color-scheme: dark;
+    --header: url("https://images2.imgbox.com/89/30/IXFzrs0y_o.png");
+
+    --neutral: #1e212a;
+    --neutralDark: #181a21;
+    --neutralDarker: #313543;
+
+    --contrast: #e5e5f0;
+    --contrastLight: #f4f4f4;
+    --contrastLighter: #40485e;
+
+    --accentClr: #7583ff;
+    --accentClrDark: #333c92;
+
+    --textColor: #c7c5cd;
+    --textColorAccent: #e5e5f0;
+
+    --border: 1px solid #2b2e3b;
+
+    --shadowBox: 0 0 20px var(--neutralDark);
+}
+
+#indstall {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     z-index: 999999;
-    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--neutralDark);
+    font-family: var(--font);
+    font-size: var(--normal-size);
+    color: var(--textColor);
+}
+
+.indstall-container {
+    display: flex;
+    width: 100%;
+    max-width: 550px;
+    background-color: var(--neutral);
+    border-radius: var(--large-radius);
+    h1 {
+        margin-top: 100px;
+        margin-bottom: 16px;
+        font-family: var(--title-font);
+        font-size: 48px;
+        line-height: 57px;
+        + p {
+            margin-top: 0;
+            font-size: 20px;
+            line-height: 27px;
+        }
+    }
+}
+
+.indstall-step {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+.indstall-button {
+    margin-top: 100px;
+    margin-bottom: 60px;
+    width: 180px;
+    height: 52px;
+    border-radius: 50px;
+    background-color: var(--accentClr);
+    font-family: var(--title-font);
+    color: var(--neutral);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
 }

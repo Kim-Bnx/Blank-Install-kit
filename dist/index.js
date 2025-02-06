@@ -2949,24 +2949,24 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactDom = require("react-dom");
-var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
+var _client = require("react-dom/client");
 var _app = require("./App");
 var _appDefault = parcelHelpers.interopDefault(_app);
 var _indexCss = require("./index.css");
 // Fonction d'initialisation
 function initializeInstaller() {
-    let container = document.getElementById("blank-theme-installer");
+    let container = document.getElementById("indstall");
     if (!container) {
         container = document.createElement("div");
-        container.id = "blank-theme-installer";
+        container.id = "indstall";
         document.body.appendChild(container);
     }
-    (0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
+    const root = (0, _client.createRoot)(container); // createRoot(container!) if you use TypeScript
+    root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
         fileName: "src/index.jsx",
-        lineNumber: 16,
-        columnNumber: 21
-    }, this), container);
+        lineNumber: 17,
+        columnNumber: 17
+    }, this));
 }
 // Expose l'initialisation dans `window` pour Forumactif
 window.BlankThemeInstaller = {
@@ -2978,7 +2978,7 @@ window.BlankThemeInstaller = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","react-dom":"hKAbJ","./App":"9YoLV","./index.css":"52dia","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"f4wnQ":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","./App":"9YoLV","./index.css":"52dia","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh","react-dom/client":"lGLKT"}],"f4wnQ":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -5697,7 +5697,838 @@ module.exports = require("a569817e6ea559f6");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"hKAbJ":[function(require,module,exports,__globalThis) {
+},{}],"9YoLV":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$fd09 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fd09.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _home = require("./pages/Home");
+var _homeDefault = parcelHelpers.interopDefault(_home);
+var _configStep = require("./pages/ConfigStep");
+var _configStepDefault = parcelHelpers.interopDefault(_configStep);
+var _installStep = require("./pages/InstallStep");
+var _installStepDefault = parcelHelpers.interopDefault(_installStep);
+var _s = $RefreshSig$();
+const App = ()=>{
+    _s();
+    const [step, setStep] = (0, _react.useState)("home");
+    const [selectedTemplates, setSelectedTemplates] = (0, _react.useState)([]);
+    const [selectedScripts, setSelectedScripts] = (0, _react.useState)([]);
+    const goToConfig = ()=>setStep("config");
+    const goToInstall = (templates, scripts)=>{
+        setSelectedTemplates(templates);
+        setSelectedScripts(scripts);
+        setStep("install");
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "indstall-container",
+        children: [
+            step === "home" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _homeDefault.default), {
+                onStart: goToConfig
+            }, void 0, false, {
+                fileName: "src/App.jsx",
+                lineNumber: 20,
+                columnNumber: 33
+            }, undefined),
+            step === "config" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _configStepDefault.default), {
+                onNext: goToInstall
+            }, void 0, false, {
+                fileName: "src/App.jsx",
+                lineNumber: 21,
+                columnNumber: 35
+            }, undefined),
+            step === "install" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _installStepDefault.default), {
+                selectedTemplates: selectedTemplates,
+                selectedScripts: selectedScripts
+            }, void 0, false, {
+                fileName: "src/App.jsx",
+                lineNumber: 23,
+                columnNumber: 17
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/App.jsx",
+        lineNumber: 19,
+        columnNumber: 9
+    }, undefined);
+};
+_s(App, "tfUQKK31ilQ+VcuJoKZnvWv4EIk=");
+_c = App;
+exports.default = App;
+var _c;
+$RefreshReg$(_c, "App");
+
+  $parcel$ReactRefreshHelpers$fd09.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","./pages/Home":"jj6u9","./pages/ConfigStep":"8GIxY","./pages/InstallStep":"fghyA","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"jj6u9":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$a1f4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a1f4.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const Home = ({ onStart })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "indstall-step",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: "BLANK THEME"
+            }, void 0, false, {
+                fileName: "src/pages/Home.jsx",
+                lineNumber: 6,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "Th\xe8me de base pour Forumactif"
+            }, void 0, false, {
+                fileName: "src/pages/Home.jsx",
+                lineNumber: 7,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                className: "indstall-button",
+                onClick: onStart,
+                children: "Installer"
+            }, void 0, false, {
+                fileName: "src/pages/Home.jsx",
+                lineNumber: 8,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/Home.jsx",
+        lineNumber: 5,
+        columnNumber: 9
+    }, undefined);
+};
+_c = Home;
+exports.default = Home;
+var _c;
+$RefreshReg$(_c, "Home");
+
+  $parcel$ReactRefreshHelpers$a1f4.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"j7FRh":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"62Vgh":[function(require,module,exports,__globalThis) {
+"use strict";
+var Refresh = require("7422ead32dcc1e6b");
+var { version } = require("630b62916b1ae0e7");
+function debounce(func, delay) {
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30);
+// Everything below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.__REACT_REFRESH_VERSION_TRANSFORMER = version;
+    window.$RefreshReg$ = function(type, id) {
+        if (window.__REACT_REFRESH_VERSION_TRANSFORMER && window.__REACT_REFRESH_VERSION_RUNTIME && window.__REACT_REFRESH_VERSION_TRANSFORMER !== window.__REACT_REFRESH_VERSION_RUNTIME) // Both versions were set and they did not match
+        throw new Error(`react-refresh versions did not match between transformer and runtime. Please check your dependencies. Transformer: ${window.__REACT_REFRESH_VERSION_TRANSFORMER}, Runtime: ${window.__REACT_REFRESH_VERSION_RUNTIME}`);
+        Refresh.register(type, module1.id + ' ' + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports;
+                // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+                // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === '__esModule') continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        if (key === '__esModule') continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + ' %exports%');
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        var typeID = id + ' %exports% ' + key;
+        Refresh.register(exportValue, typeID);
+    }
+}
+
+},{"7422ead32dcc1e6b":"8644z","630b62916b1ae0e7":"cTS5R"}],"cTS5R":[function(require,module,exports,__globalThis) {
+module.exports = JSON.parse("{\"name\":\"react-refresh\",\"description\":\"React is a JavaScript library for building user interfaces.\",\"keywords\":[\"react\"],\"version\":\"0.14.2\",\"homepage\":\"https://reactjs.org/\",\"bugs\":\"https://github.com/facebook/react/issues\",\"license\":\"MIT\",\"files\":[\"LICENSE\",\"README.md\",\"babel.js\",\"runtime.js\",\"cjs/\",\"umd/\"],\"main\":\"runtime.js\",\"exports\":{\".\":\"./runtime.js\",\"./runtime\":\"./runtime.js\",\"./babel\":\"./babel.js\",\"./package.json\":\"./package.json\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/facebook/react.git\",\"directory\":\"packages/react\"},\"engines\":{\"node\":\">=0.10.0\"},\"devDependencies\":{\"react-16-8\":\"npm:react@16.8.0\",\"react-dom-16-8\":\"npm:react-dom@16.8.0\",\"scheduler-0-13\":\"npm:scheduler@0.13.0\"}}");
+
+},{}],"8GIxY":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$e38c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e38c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _s = $RefreshSig$();
+const ConfigStep = ({ onNext })=>{
+    _s();
+    const [selectedTemplates, setSelectedTemplates] = (0, _react.useState)(new Set());
+    const [selectedScripts, setSelectedScripts] = (0, _react.useState)(new Set());
+    const templates = [
+        "index_body",
+        "viewtopic_body",
+        "posting_body"
+    ];
+    const scripts = [
+        "main.js",
+        "utils.js"
+    ];
+    const toggleSelection = (set, item)=>{
+        set((prev)=>{
+            const newSet = new Set(prev);
+            newSet.has(item) ? newSet.delete(item) : newSet.add(item);
+            return newSet;
+        });
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: "Personnalisation de l'installation"
+            }, void 0, false, {
+                fileName: "src/pages/ConfigStep.jsx",
+                lineNumber: 20,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "Templates"
+            }, void 0, false, {
+                fileName: "src/pages/ConfigStep.jsx",
+                lineNumber: 21,
+                columnNumber: 13
+            }, undefined),
+            templates.map((template)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            type: "checkbox",
+                            onChange: ()=>toggleSelection(setSelectedTemplates, template)
+                        }, void 0, false, {
+                            fileName: "src/pages/ConfigStep.jsx",
+                            lineNumber: 24,
+                            columnNumber: 21
+                        }, undefined),
+                        template
+                    ]
+                }, template, true, {
+                    fileName: "src/pages/ConfigStep.jsx",
+                    lineNumber: 23,
+                    columnNumber: 17
+                }, undefined)),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "Scripts"
+            }, void 0, false, {
+                fileName: "src/pages/ConfigStep.jsx",
+                lineNumber: 33,
+                columnNumber: 13
+            }, undefined),
+            scripts.map((script)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            type: "checkbox",
+                            onChange: ()=>toggleSelection(setSelectedScripts, script)
+                        }, void 0, false, {
+                            fileName: "src/pages/ConfigStep.jsx",
+                            lineNumber: 36,
+                            columnNumber: 21
+                        }, undefined),
+                        script
+                    ]
+                }, script, true, {
+                    fileName: "src/pages/ConfigStep.jsx",
+                    lineNumber: 35,
+                    columnNumber: 17
+                }, undefined)),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>onNext([
+                        ...selectedTemplates
+                    ], [
+                        ...selectedScripts
+                    ]),
+                children: "Suivant"
+            }, void 0, false, {
+                fileName: "src/pages/ConfigStep.jsx",
+                lineNumber: 45,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/ConfigStep.jsx",
+        lineNumber: 19,
+        columnNumber: 9
+    }, undefined);
+};
+_s(ConfigStep, "xdbZuA76ua+Lx+RZdktHI2bSNmQ=");
+_c = ConfigStep;
+exports.default = ConfigStep;
+var _c;
+$RefreshReg$(_c, "ConfigStep");
+
+  $parcel$ReactRefreshHelpers$e38c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"fghyA":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$d578 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d578.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _wizardStep = require("../components/WizardStep");
+var _wizardStepDefault = parcelHelpers.interopDefault(_wizardStep);
+var _installer = require("../utils/installer");
+var _s = $RefreshSig$();
+const InstallStep = ({ selectedTemplates, selectedScripts })=>{
+    _s();
+    const [progress, setProgress] = (0, _react.useState)({
+        css: 0,
+        templates: 0,
+        scripts: 0,
+        steps: {
+            css: [],
+            templates: [],
+            scripts: []
+        }
+    });
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "indstall-step",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: "Installation en cours..."
+            }, void 0, false, {
+                fileName: "src/pages/InstallStep.jsx",
+                lineNumber: 19,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wizardStepDefault.default), {
+                title: "CSS",
+                percentage: progress.css,
+                steps: progress.steps.css,
+                isActive: true
+            }, void 0, false, {
+                fileName: "src/pages/InstallStep.jsx",
+                lineNumber: 20,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wizardStepDefault.default), {
+                title: "Templates",
+                percentage: progress.templates,
+                steps: progress.steps.templates
+            }, void 0, false, {
+                fileName: "src/pages/InstallStep.jsx",
+                lineNumber: 26,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wizardStepDefault.default), {
+                title: "Scripts",
+                percentage: progress.scripts,
+                steps: progress.steps.scripts
+            }, void 0, false, {
+                fileName: "src/pages/InstallStep.jsx",
+                lineNumber: 31,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>(0, _installer.startInstallation)(setProgress, selectedTemplates, selectedScripts),
+                children: "D\xe9marrer l'installation"
+            }, void 0, false, {
+                fileName: "src/pages/InstallStep.jsx",
+                lineNumber: 37,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/InstallStep.jsx",
+        lineNumber: 18,
+        columnNumber: 9
+    }, undefined);
+};
+_s(InstallStep, "ztt5eIoC1e9wV5ld0H42sxLyK1o=");
+_c = InstallStep;
+exports.default = InstallStep;
+var _c;
+$RefreshReg$(_c, "InstallStep");
+
+  $parcel$ReactRefreshHelpers$d578.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","../components/WizardStep":"41oDW","../utils/installer":"03Tnb","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"41oDW":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$1314 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1314.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _progressRing = require("./ProgressRing");
+var _progressRingDefault = parcelHelpers.interopDefault(_progressRing);
+const WizardStep = ({ title, percentage, steps, isActive })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: `progress-section ${isActive ? "active" : "hidden"}`,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "progress-header",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: title
+                    }, void 0, false, {
+                        fileName: "src/components/WizardStep.jsx",
+                        lineNumber: 8,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _progressRingDefault.default), {
+                        percentage: percentage
+                    }, void 0, false, {
+                        fileName: "src/components/WizardStep.jsx",
+                        lineNumber: 9,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/WizardStep.jsx",
+                lineNumber: 7,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                className: "progress-list",
+                children: steps.map((step, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: step
+                    }, index, false, {
+                        fileName: "src/components/WizardStep.jsx",
+                        lineNumber: 13,
+                        columnNumber: 21
+                    }, undefined))
+            }, void 0, false, {
+                fileName: "src/components/WizardStep.jsx",
+                lineNumber: 11,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/WizardStep.jsx",
+        lineNumber: 6,
+        columnNumber: 9
+    }, undefined);
+};
+_c = WizardStep;
+exports.default = WizardStep;
+var _c;
+$RefreshReg$(_c, "WizardStep");
+
+  $parcel$ReactRefreshHelpers$1314.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","./ProgressRing":"aw9jP","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"aw9jP":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$58d2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$58d2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const ProgressRing = ({ percentage })=>{
+    const circleRadius = 20;
+    const circumference = 2 * Math.PI * circleRadius;
+    const strokeDashoffset = circumference - percentage / 100 * circumference;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+        width: "50",
+        height: "50",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("circle", {
+                cx: "25",
+                cy: "25",
+                r: circleRadius,
+                stroke: "#e0e0e0",
+                strokeWidth: "5",
+                fill: "none"
+            }, void 0, false, {
+                fileName: "src/components/ProgressRing.jsx",
+                lineNumber: 10,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("circle", {
+                cx: "25",
+                cy: "25",
+                r: circleRadius,
+                stroke: "#4a90e2",
+                strokeWidth: "5",
+                fill: "none",
+                strokeDasharray: circumference,
+                strokeDashoffset: strokeDashoffset,
+                transform: "rotate(-90 25 25)"
+            }, void 0, false, {
+                fileName: "src/components/ProgressRing.jsx",
+                lineNumber: 18,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("text", {
+                x: "25",
+                y: "30",
+                textAnchor: "middle",
+                fontSize: "10",
+                children: `${percentage}%`
+            }, void 0, false, {
+                fileName: "src/components/ProgressRing.jsx",
+                lineNumber: 29,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/ProgressRing.jsx",
+        lineNumber: 9,
+        columnNumber: 9
+    }, undefined);
+};
+_c = ProgressRing;
+exports.default = ProgressRing;
+var _c;
+$RefreshReg$(_c, "ProgressRing");
+
+  $parcel$ReactRefreshHelpers$58d2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"03Tnb":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/**
+ * Lance l'installation des fichiers CSS, Templates et Scripts
+ * @param {function} updateProgress Fonction de mise à jour de la progression
+ * @param {Array} selectedTemplates Liste des templates à installer
+ * @param {Array} selectedScripts Liste des scripts à installer
+ */ parcelHelpers.export(exports, "startInstallation", ()=>startInstallation);
+var _githubJs = require("./github.js");
+var _forumactifJs = require("./forumactif.js");
+var _installStep = require("../pages/InstallStep"); // Mise à jour de l'UI
+async function startInstallation(updateProgress, selectedTemplates, selectedScripts) {
+    try {
+        updateProgress(0, "Installation du CSS...", "css");
+        let cssFiles = await (0, _githubJs.fetchFilesFromGitHub)("CSS");
+        if (cssFiles.length > 0) {
+            let cssContent = await (0, _githubJs.fetchFileContent)(cssFiles[0].download_url);
+            await (0, _forumactifJs.injectContent)("css", cssContent, (message)=>updateProgress(100, message, "css"));
+        }
+        updateProgress(0, "Installation des templates...", "templates");
+        for (let template of selectedTemplates)await (0, _forumactifJs.injectContent)("template", template, (message)=>updateProgress(100, message, "templates"));
+        updateProgress(0, "Installation des scripts...", "scripts");
+        for (let script of selectedScripts)await (0, _forumactifJs.injectContent)("js", script, (message)=>updateProgress(100, message, "scripts"));
+        updateProgress(100, "Installation termin\xe9e avec succ\xe8s !", "config");
+    } catch (error) {
+        console.error(error);
+        updateProgress(100, "Erreur lors de l'installation", "config");
+    }
+}
+
+},{"./github.js":"iX3jp","./forumactif.js":"gsUnt","../pages/InstallStep":"fghyA","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"iX3jp":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/**
+ * Récupère la liste des fichiers dans un dossier GitHub.
+ * @param {string} path Chemin du dossier (ex: "CSS", "Javascript", "Templates/Layout")
+ * @returns {Promise<Array>} Liste des fichiers
+ */ parcelHelpers.export(exports, "fetchFilesFromGitHub", ()=>fetchFilesFromGitHub);
+/**
+ * Récupère le contenu d'un fichier GitHub.
+ * @param {string} url URL du fichier à télécharger
+ * @returns {Promise<string>} Contenu du fichier
+ */ parcelHelpers.export(exports, "fetchFileContent", ()=>fetchFileContent);
+const GITHUB_BASE_URL = "https://api.github.com/repos/Kim-Bnx/Blank-Theme/contents";
+async function fetchFilesFromGitHub(path) {
+    try {
+        let response = await fetch(`${GITHUB_BASE_URL}/${path}`);
+        return response.ok ? await response.json() : [];
+    } catch (error) {
+        console.error(`\u{274C} Erreur lors de la r\xe9cup\xe9ration des fichiers de ${path}:`, error);
+        return [];
+    }
+}
+async function fetchFileContent(url) {
+    try {
+        let response = await fetch(url);
+        return response.ok ? await response.text() : null;
+    } catch (error) {
+        console.error(`\u{274C} Erreur lors de la r\xe9cup\xe9ration du fichier:`, error);
+        return null;
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"gsUnt":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/**
+ * Crée une iframe pour charger une page d'administration Forumactif.
+ * @param {string} url URL de la page d'administration
+ * @param {function} onLoadCallback Fonction à exécuter une fois l'iframe chargée
+ */ parcelHelpers.export(exports, "createIframe", ()=>createIframe);
+/**
+ * Injecte un fichier (CSS, JS ou Template) dans Forumactif.
+ * @param {string} type Type de fichier ("css", "js", "template")
+ * @param {string} content Contenu du fichier
+ * @param {function} updateProgress Fonction de mise à jour de la progression
+ * @param {object} auth Informations d'authentification Forumactif
+ * @param {object} additionalData Données supplémentaires (id du template, layout)
+ */ parcelHelpers.export(exports, "injectContent", ()=>injectContent);
+var _helpers = require("./helpers");
+function createIframe(url, onLoadCallback) {
+    let iframe = document.createElement("iframe");
+    iframe.src = url;
+    iframe.style.width = "100%";
+    iframe.style.height = "600px";
+    iframe.style.position = "fixed";
+    iframe.style.top = "50px";
+    iframe.style.left = "50%";
+    iframe.style.transform = "translateX(-50%)";
+    iframe.style.zIndex = "9999";
+    iframe.style.border = "1px solid black";
+    document.body.appendChild(iframe);
+    iframe.onload = ()=>onLoadCallback(iframe);
+}
+function injectContent(type, content, updateProgress, auth, additionalData = {}) {
+    let url;
+    switch(type){
+        case "css":
+            url = `/admin/?part=themes&sub=logos&mode=css&tid=${auth.tid}&_tc=${auth._tc}`;
+            break;
+        case "js":
+            url = `/admin/index.forum?part=themes&sub=javascript`;
+            break;
+        case "template":
+            if (!additionalData.templateId || !additionalData.layout) {
+                console.error("\u274C Informations manquantes pour l'injection de template.");
+                return;
+            }
+            url = `/admin/?part=themes&sub=templates&mode=edit_main&t=${additionalData.templateId}&l=${(0, _helpers.capitalize)(additionalData.layout)}&extended_admin=1&tid=${auth.tid}&_t=${auth._tc}`;
+            break;
+        default:
+            console.error(`\u{274C} Type d'injection inconnu : ${type}`);
+            return;
+    }
+    createIframe(url, (iframe)=>{
+        let iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        let textarea = iframeDocument.querySelector("textarea#edit_code");
+        if (!textarea) {
+            console.error(`\u{274C} Impossible de trouver l'\xe9diteur pour ${type}.`);
+            return;
+        }
+        textarea.value = content;
+        textarea.dispatchEvent(new Event("input", {
+            bubbles: true
+        }));
+        let saveButton = iframeDocument.querySelector("input[type='submit']");
+        if (saveButton) {
+            console.log(`\u{1F4BE} Sauvegarde automatique du ${type}...`);
+            saveButton.click();
+            updateProgress(`Injection du ${type} termin\xe9e.`);
+        } else console.error(`\u{274C} Bouton de validation introuvable pour ${type}.`);
+    });
+}
+
+},{"./helpers":"drq0N","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"drq0N":[function(require,module,exports,__globalThis) {
+/**
+ * Met la première lettre d'une chaîne en majuscule.
+ * @param {string} str Chaîne à transformer
+ * @returns {string} Chaîne avec première lettre en majuscule
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "capitalize", ()=>capitalize);
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"52dia":[function() {},{}],"lGLKT":[function(require,module,exports,__globalThis) {
+'use strict';
+var m = require("aaccff5d309d9239");
+var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+        return m.createRoot(c, o);
+    } finally{
+        i.usingClientEntryPoint = false;
+    }
+};
+exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+        return m.hydrateRoot(c, h, o);
+    } finally{
+        i.usingClientEntryPoint = false;
+    }
+};
+
+},{"aaccff5d309d9239":"hKAbJ"}],"hKAbJ":[function(require,module,exports,__globalThis) {
 'use strict';
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function') return;
@@ -27200,812 +28031,5 @@ module.exports = require("ef03b89c8fe2794e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"9YoLV":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$fd09 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$fd09.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _home = require("./pages/Home");
-var _homeDefault = parcelHelpers.interopDefault(_home);
-var _configStep = require("./pages/ConfigStep");
-var _configStepDefault = parcelHelpers.interopDefault(_configStep);
-var _installStep = require("./pages/InstallStep");
-var _installStepDefault = parcelHelpers.interopDefault(_installStep);
-var _s = $RefreshSig$();
-const App = ()=>{
-    _s();
-    const [step, setStep] = (0, _react.useState)("home");
-    const [selectedTemplates, setSelectedTemplates] = (0, _react.useState)([]);
-    const [selectedScripts, setSelectedScripts] = (0, _react.useState)([]);
-    const goToConfig = ()=>setStep("config");
-    const goToInstall = (templates, scripts)=>{
-        setSelectedTemplates(templates);
-        setSelectedScripts(scripts);
-        setStep("install");
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            step === "home" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _homeDefault.default), {
-                onStart: goToConfig
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 20,
-                columnNumber: 33
-            }, undefined),
-            step === "config" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _configStepDefault.default), {
-                onNext: goToInstall
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 21,
-                columnNumber: 35
-            }, undefined),
-            step === "install" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _installStepDefault.default), {
-                selectedTemplates: selectedTemplates,
-                selectedScripts: selectedScripts
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 23,
-                columnNumber: 17
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/App.jsx",
-        lineNumber: 19,
-        columnNumber: 9
-    }, undefined);
-};
-_s(App, "tfUQKK31ilQ+VcuJoKZnvWv4EIk=");
-_c = App;
-exports.default = App;
-var _c;
-$RefreshReg$(_c, "App");
-
-  $parcel$ReactRefreshHelpers$fd09.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","./pages/Home":"jj6u9","./pages/ConfigStep":"8GIxY","./pages/InstallStep":"fghyA","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"jj6u9":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$a1f4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$a1f4.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-const Home = ({ onStart })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "installer-container",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "BLANK THEME"
-            }, void 0, false, {
-                fileName: "src/pages/Home.jsx",
-                lineNumber: 6,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "Th\xe8me de base pour Forumactif"
-            }, void 0, false, {
-                fileName: "src/pages/Home.jsx",
-                lineNumber: 7,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: onStart,
-                children: "Installer"
-            }, void 0, false, {
-                fileName: "src/pages/Home.jsx",
-                lineNumber: 8,
-                columnNumber: 13
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/pages/Home.jsx",
-        lineNumber: 5,
-        columnNumber: 9
-    }, undefined);
-};
-_c = Home;
-exports.default = Home;
-var _c;
-$RefreshReg$(_c, "Home");
-
-  $parcel$ReactRefreshHelpers$a1f4.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"j7FRh":[function(require,module,exports,__globalThis) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"62Vgh":[function(require,module,exports,__globalThis) {
-"use strict";
-var Refresh = require("7422ead32dcc1e6b");
-var { version } = require("630b62916b1ae0e7");
-function debounce(func, delay) {
-    {
-        let timeout = undefined;
-        let lastTime = 0;
-        return function(args) {
-            // Call immediately if last call was more than the delay ago.
-            // Otherwise, set a timeout. This means the first call is fast
-            // (for the common case of a single update), and subsequent updates
-            // are batched.
-            let now = Date.now();
-            if (now - lastTime > delay) {
-                lastTime = now;
-                func.call(null, args);
-            } else {
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                    timeout = undefined;
-                    lastTime = Date.now();
-                    func.call(null, args);
-                }, delay);
-            }
-        };
-    }
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30);
-// Everything below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.__REACT_REFRESH_VERSION_TRANSFORMER = version;
-    window.$RefreshReg$ = function(type, id) {
-        if (window.__REACT_REFRESH_VERSION_TRANSFORMER && window.__REACT_REFRESH_VERSION_RUNTIME && window.__REACT_REFRESH_VERSION_TRANSFORMER !== window.__REACT_REFRESH_VERSION_RUNTIME) // Both versions were set and they did not match
-        throw new Error(`react-refresh versions did not match between transformer and runtime. Please check your dependencies. Transformer: ${window.__REACT_REFRESH_VERSION_TRANSFORMER}, Runtime: ${window.__REACT_REFRESH_VERSION_RUNTIME}`);
-        Refresh.register(type, module1.id + ' ' + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports;
-                // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-                // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === '__esModule') continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        if (key === '__esModule') continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + ' %exports%');
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        var typeID = id + ' %exports% ' + key;
-        Refresh.register(exportValue, typeID);
-    }
-}
-
-},{"7422ead32dcc1e6b":"8644z","630b62916b1ae0e7":"cTS5R"}],"cTS5R":[function(require,module,exports,__globalThis) {
-module.exports = JSON.parse("{\"name\":\"react-refresh\",\"description\":\"React is a JavaScript library for building user interfaces.\",\"keywords\":[\"react\"],\"version\":\"0.14.2\",\"homepage\":\"https://reactjs.org/\",\"bugs\":\"https://github.com/facebook/react/issues\",\"license\":\"MIT\",\"files\":[\"LICENSE\",\"README.md\",\"babel.js\",\"runtime.js\",\"cjs/\",\"umd/\"],\"main\":\"runtime.js\",\"exports\":{\".\":\"./runtime.js\",\"./runtime\":\"./runtime.js\",\"./babel\":\"./babel.js\",\"./package.json\":\"./package.json\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/facebook/react.git\",\"directory\":\"packages/react\"},\"engines\":{\"node\":\">=0.10.0\"},\"devDependencies\":{\"react-16-8\":\"npm:react@16.8.0\",\"react-dom-16-8\":\"npm:react-dom@16.8.0\",\"scheduler-0-13\":\"npm:scheduler@0.13.0\"}}");
-
-},{}],"8GIxY":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$e38c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$e38c.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _s = $RefreshSig$();
-const ConfigStep = ({ onNext })=>{
-    _s();
-    const [selectedTemplates, setSelectedTemplates] = (0, _react.useState)(new Set());
-    const [selectedScripts, setSelectedScripts] = (0, _react.useState)(new Set());
-    const templates = [
-        "index_body",
-        "viewtopic_body",
-        "posting_body"
-    ];
-    const scripts = [
-        "main.js",
-        "utils.js"
-    ];
-    const toggleSelection = (set, item)=>{
-        set((prev)=>{
-            const newSet = new Set(prev);
-            newSet.has(item) ? newSet.delete(item) : newSet.add(item);
-            return newSet;
-        });
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "Personnalisation de l'installation"
-            }, void 0, false, {
-                fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 20,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "Templates"
-            }, void 0, false, {
-                fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 21,
-                columnNumber: 13
-            }, undefined),
-            templates.map((template)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "checkbox",
-                            onChange: ()=>toggleSelection(setSelectedTemplates, template)
-                        }, void 0, false, {
-                            fileName: "src/pages/ConfigStep.jsx",
-                            lineNumber: 24,
-                            columnNumber: 21
-                        }, undefined),
-                        template
-                    ]
-                }, template, true, {
-                    fileName: "src/pages/ConfigStep.jsx",
-                    lineNumber: 23,
-                    columnNumber: 17
-                }, undefined)),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "Scripts"
-            }, void 0, false, {
-                fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 33,
-                columnNumber: 13
-            }, undefined),
-            scripts.map((script)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "checkbox",
-                            onChange: ()=>toggleSelection(setSelectedScripts, script)
-                        }, void 0, false, {
-                            fileName: "src/pages/ConfigStep.jsx",
-                            lineNumber: 36,
-                            columnNumber: 21
-                        }, undefined),
-                        script
-                    ]
-                }, script, true, {
-                    fileName: "src/pages/ConfigStep.jsx",
-                    lineNumber: 35,
-                    columnNumber: 17
-                }, undefined)),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>onNext([
-                        ...selectedTemplates
-                    ], [
-                        ...selectedScripts
-                    ]),
-                children: "Suivant"
-            }, void 0, false, {
-                fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 45,
-                columnNumber: 13
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/pages/ConfigStep.jsx",
-        lineNumber: 19,
-        columnNumber: 9
-    }, undefined);
-};
-_s(ConfigStep, "xdbZuA76ua+Lx+RZdktHI2bSNmQ=");
-_c = ConfigStep;
-exports.default = ConfigStep;
-var _c;
-$RefreshReg$(_c, "ConfigStep");
-
-  $parcel$ReactRefreshHelpers$e38c.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"fghyA":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$d578 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$d578.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _wizardStep = require("../components/WizardStep");
-var _wizardStepDefault = parcelHelpers.interopDefault(_wizardStep);
-var _installer = require("../utils/installer");
-var _s = $RefreshSig$();
-const InstallStep = ({ selectedTemplates, selectedScripts })=>{
-    _s();
-    const [progress, setProgress] = (0, _react.useState)({
-        css: 0,
-        templates: 0,
-        scripts: 0,
-        steps: {
-            css: [],
-            templates: [],
-            scripts: []
-        }
-    });
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "Installation en cours..."
-            }, void 0, false, {
-                fileName: "src/pages/InstallStep.jsx",
-                lineNumber: 19,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wizardStepDefault.default), {
-                title: "CSS",
-                percentage: progress.css,
-                steps: progress.steps.css,
-                isActive: true
-            }, void 0, false, {
-                fileName: "src/pages/InstallStep.jsx",
-                lineNumber: 20,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wizardStepDefault.default), {
-                title: "Templates",
-                percentage: progress.templates,
-                steps: progress.steps.templates
-            }, void 0, false, {
-                fileName: "src/pages/InstallStep.jsx",
-                lineNumber: 26,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wizardStepDefault.default), {
-                title: "Scripts",
-                percentage: progress.scripts,
-                steps: progress.steps.scripts
-            }, void 0, false, {
-                fileName: "src/pages/InstallStep.jsx",
-                lineNumber: 31,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>(0, _installer.startInstallation)(setProgress, selectedTemplates, selectedScripts),
-                children: "D\xe9marrer l'installation"
-            }, void 0, false, {
-                fileName: "src/pages/InstallStep.jsx",
-                lineNumber: 37,
-                columnNumber: 13
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/pages/InstallStep.jsx",
-        lineNumber: 18,
-        columnNumber: 9
-    }, undefined);
-};
-_s(InstallStep, "ztt5eIoC1e9wV5ld0H42sxLyK1o=");
-_c = InstallStep;
-exports.default = InstallStep;
-var _c;
-$RefreshReg$(_c, "InstallStep");
-
-  $parcel$ReactRefreshHelpers$d578.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","../components/WizardStep":"41oDW","../utils/installer":"03Tnb","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"41oDW":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$1314 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$1314.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _progressRing = require("./ProgressRing");
-var _progressRingDefault = parcelHelpers.interopDefault(_progressRing);
-const WizardStep = ({ title, percentage, steps, isActive })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: `progress-section ${isActive ? "active" : "hidden"}`,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "progress-header",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: title
-                    }, void 0, false, {
-                        fileName: "src/components/WizardStep.jsx",
-                        lineNumber: 8,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _progressRingDefault.default), {
-                        percentage: percentage
-                    }, void 0, false, {
-                        fileName: "src/components/WizardStep.jsx",
-                        lineNumber: 9,
-                        columnNumber: 17
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/WizardStep.jsx",
-                lineNumber: 7,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                className: "progress-list",
-                children: steps.map((step, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: step
-                    }, index, false, {
-                        fileName: "src/components/WizardStep.jsx",
-                        lineNumber: 13,
-                        columnNumber: 21
-                    }, undefined))
-            }, void 0, false, {
-                fileName: "src/components/WizardStep.jsx",
-                lineNumber: 11,
-                columnNumber: 13
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/WizardStep.jsx",
-        lineNumber: 6,
-        columnNumber: 9
-    }, undefined);
-};
-_c = WizardStep;
-exports.default = WizardStep;
-var _c;
-$RefreshReg$(_c, "WizardStep");
-
-  $parcel$ReactRefreshHelpers$1314.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","./ProgressRing":"aw9jP","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"aw9jP":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$58d2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$58d2.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-const ProgressRing = ({ percentage })=>{
-    const circleRadius = 20;
-    const circumference = 2 * Math.PI * circleRadius;
-    const strokeDashoffset = circumference - percentage / 100 * circumference;
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-        width: "50",
-        height: "50",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("circle", {
-                cx: "25",
-                cy: "25",
-                r: circleRadius,
-                stroke: "#e0e0e0",
-                strokeWidth: "5",
-                fill: "none"
-            }, void 0, false, {
-                fileName: "src/components/ProgressRing.jsx",
-                lineNumber: 10,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("circle", {
-                cx: "25",
-                cy: "25",
-                r: circleRadius,
-                stroke: "#4a90e2",
-                strokeWidth: "5",
-                fill: "none",
-                strokeDasharray: circumference,
-                strokeDashoffset: strokeDashoffset,
-                transform: "rotate(-90 25 25)"
-            }, void 0, false, {
-                fileName: "src/components/ProgressRing.jsx",
-                lineNumber: 18,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("text", {
-                x: "25",
-                y: "30",
-                textAnchor: "middle",
-                fontSize: "10",
-                children: `${percentage}%`
-            }, void 0, false, {
-                fileName: "src/components/ProgressRing.jsx",
-                lineNumber: 29,
-                columnNumber: 13
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/ProgressRing.jsx",
-        lineNumber: 9,
-        columnNumber: 9
-    }, undefined);
-};
-_c = ProgressRing;
-exports.default = ProgressRing;
-var _c;
-$RefreshReg$(_c, "ProgressRing");
-
-  $parcel$ReactRefreshHelpers$58d2.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"03Tnb":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * Lance l'installation des fichiers CSS, Templates et Scripts
- * @param {function} updateProgress Fonction de mise à jour de la progression
- * @param {Array} selectedTemplates Liste des templates à installer
- * @param {Array} selectedScripts Liste des scripts à installer
- */ parcelHelpers.export(exports, "startInstallation", ()=>startInstallation);
-var _githubJs = require("./github.js");
-var _forumactifJs = require("./forumactif.js");
-var _installStep = require("../pages/InstallStep"); // Mise à jour de l'UI
-async function startInstallation(updateProgress, selectedTemplates, selectedScripts) {
-    try {
-        updateProgress(0, "Installation du CSS...", "css");
-        let cssFiles = await (0, _githubJs.fetchFilesFromGitHub)("CSS");
-        if (cssFiles.length > 0) {
-            let cssContent = await (0, _githubJs.fetchFileContent)(cssFiles[0].download_url);
-            await (0, _forumactifJs.injectContent)("css", cssContent, (message)=>updateProgress(100, message, "css"));
-        }
-        updateProgress(0, "Installation des templates...", "templates");
-        for (let template of selectedTemplates)await (0, _forumactifJs.injectContent)("template", template, (message)=>updateProgress(100, message, "templates"));
-        updateProgress(0, "Installation des scripts...", "scripts");
-        for (let script of selectedScripts)await (0, _forumactifJs.injectContent)("js", script, (message)=>updateProgress(100, message, "scripts"));
-        updateProgress(100, "Installation termin\xe9e avec succ\xe8s !", "config");
-    } catch (error) {
-        console.error(error);
-        updateProgress(100, "Erreur lors de l'installation", "config");
-    }
-}
-
-},{"./github.js":"iX3jp","./forumactif.js":"gsUnt","../pages/InstallStep":"fghyA","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"iX3jp":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * Récupère la liste des fichiers dans un dossier GitHub.
- * @param {string} path Chemin du dossier (ex: "CSS", "Javascript", "Templates/Layout")
- * @returns {Promise<Array>} Liste des fichiers
- */ parcelHelpers.export(exports, "fetchFilesFromGitHub", ()=>fetchFilesFromGitHub);
-/**
- * Récupère le contenu d'un fichier GitHub.
- * @param {string} url URL du fichier à télécharger
- * @returns {Promise<string>} Contenu du fichier
- */ parcelHelpers.export(exports, "fetchFileContent", ()=>fetchFileContent);
-const GITHUB_BASE_URL = "https://api.github.com/repos/Kim-Bnx/Blank-Theme/contents";
-async function fetchFilesFromGitHub(path) {
-    try {
-        let response = await fetch(`${GITHUB_BASE_URL}/${path}`);
-        return response.ok ? await response.json() : [];
-    } catch (error) {
-        console.error(`\u{274C} Erreur lors de la r\xe9cup\xe9ration des fichiers de ${path}:`, error);
-        return [];
-    }
-}
-async function fetchFileContent(url) {
-    try {
-        let response = await fetch(url);
-        return response.ok ? await response.text() : null;
-    } catch (error) {
-        console.error(`\u{274C} Erreur lors de la r\xe9cup\xe9ration du fichier:`, error);
-        return null;
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"gsUnt":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * Crée une iframe pour charger une page d'administration Forumactif.
- * @param {string} url URL de la page d'administration
- * @param {function} onLoadCallback Fonction à exécuter une fois l'iframe chargée
- */ parcelHelpers.export(exports, "createIframe", ()=>createIframe);
-/**
- * Injecte un fichier (CSS, JS ou Template) dans Forumactif.
- * @param {string} type Type de fichier ("css", "js", "template")
- * @param {string} content Contenu du fichier
- * @param {function} updateProgress Fonction de mise à jour de la progression
- * @param {object} auth Informations d'authentification Forumactif
- * @param {object} additionalData Données supplémentaires (id du template, layout)
- */ parcelHelpers.export(exports, "injectContent", ()=>injectContent);
-var _helpers = require("./helpers");
-function createIframe(url, onLoadCallback) {
-    let iframe = document.createElement("iframe");
-    iframe.src = url;
-    iframe.style.width = "100%";
-    iframe.style.height = "600px";
-    iframe.style.position = "fixed";
-    iframe.style.top = "50px";
-    iframe.style.left = "50%";
-    iframe.style.transform = "translateX(-50%)";
-    iframe.style.zIndex = "9999";
-    iframe.style.border = "1px solid black";
-    document.body.appendChild(iframe);
-    iframe.onload = ()=>onLoadCallback(iframe);
-}
-function injectContent(type, content, updateProgress, auth, additionalData = {}) {
-    let url;
-    switch(type){
-        case "css":
-            url = `/admin/?part=themes&sub=logos&mode=css&tid=${auth.tid}&_tc=${auth._tc}`;
-            break;
-        case "js":
-            url = `/admin/index.forum?part=themes&sub=javascript`;
-            break;
-        case "template":
-            if (!additionalData.templateId || !additionalData.layout) {
-                console.error("\u274C Informations manquantes pour l'injection de template.");
-                return;
-            }
-            url = `/admin/?part=themes&sub=templates&mode=edit_main&t=${additionalData.templateId}&l=${(0, _helpers.capitalize)(additionalData.layout)}&extended_admin=1&tid=${auth.tid}&_t=${auth._tc}`;
-            break;
-        default:
-            console.error(`\u{274C} Type d'injection inconnu : ${type}`);
-            return;
-    }
-    createIframe(url, (iframe)=>{
-        let iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-        let textarea = iframeDocument.querySelector("textarea#edit_code");
-        if (!textarea) {
-            console.error(`\u{274C} Impossible de trouver l'\xe9diteur pour ${type}.`);
-            return;
-        }
-        textarea.value = content;
-        textarea.dispatchEvent(new Event("input", {
-            bubbles: true
-        }));
-        let saveButton = iframeDocument.querySelector("input[type='submit']");
-        if (saveButton) {
-            console.log(`\u{1F4BE} Sauvegarde automatique du ${type}...`);
-            saveButton.click();
-            updateProgress(`Injection du ${type} termin\xe9e.`);
-        } else console.error(`\u{274C} Bouton de validation introuvable pour ${type}.`);
-    });
-}
-
-},{"./helpers":"drq0N","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"drq0N":[function(require,module,exports,__globalThis) {
-/**
- * Met la première lettre d'une chaîne en majuscule.
- * @param {string} str Chaîne à transformer
- * @returns {string} Chaîne avec première lettre en majuscule
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "capitalize", ()=>capitalize);
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"52dia":[function() {},{}]},["cGT9o","ggxU7","xy7VM"], "xy7VM", "parcelRequire94c2")
+},{}]},["cGT9o","ggxU7","xy7VM"], "xy7VM", "parcelRequire94c2")
 

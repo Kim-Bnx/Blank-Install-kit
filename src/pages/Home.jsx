@@ -2,10 +2,12 @@ import React from "react";
 
 const Home = ({ onStart }) => {
     return (
-        <div className="installer-container">
+        <div className="indstall-step">
             <h1>BLANK THEME</h1>
             <p>Thème de base pour Forumactif</p>
-            <button onClick={onStart}>Installer</button>
+            <button className="indstall-button" onClick={onStart}>
+                Installer
+            </button>
         </div>
     );
 };
