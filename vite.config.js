@@ -4,12 +4,23 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    define: {
+        "process.env": {}, // ✅ Supprime l'erreur "process is not defined"
+    },
     build: {
+        outDir: "dist",
+        lib: {
+            entry: "src/main.jsx", // Utilisation d'un fichier principal JavaScript
+            name: "BlankThemeInstaller", // Nom de la variable globale (window.BlankThemeInstaller)
+            fileName: (format) => `blank-theme-installer.${format}.js`, // Générer blank-theme-installer.umd.js
+            formats: ["umd"], // Générer un fichier compatible avec les balises <script>
+        },
         rollupOptions: {
             output: {
-                entryFileNames: `assets/[name].js`,
-                chunkFileNames: `assets/[name].js`,
-                assetFileNames: `assets/[name].[ext]`,
+                globals: {
+                    react: "React",
+                    "react-dom": "ReactDOM",
+                },
             },
         },
     },

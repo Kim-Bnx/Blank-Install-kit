@@ -2,6 +2,14 @@ import TEMPLATES from "@/data/install.json";
 import CONFIG from "@/data/config.json";
 import { getRepoFileContent } from "@/lib/API";
 
+import {
+    initSetup,
+    initCSS,
+    initInstall,
+    initScripts,
+    initConfig,
+} from "@/lib/FA";
+
 const LOCATION = new URL(window.location);
 const ROOT = `${LOCATION.protocol}//${LOCATION.host}`;
 
