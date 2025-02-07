@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 
+const ListItem = ({ item, selected, onSelect }) => {
+    return (
+        <label>
+            <input type="checkbox" onChange={() => onSelect(selected, item)} />
+            {item}
+        </label>
+    );
+};
+
 const ConfigStep = ({ onNext }) => {
     const [selectedTemplates, setSelectedTemplates] = useState(new Set());
     const [selectedScripts, setSelectedScripts] = useState(new Set());
@@ -16,39 +25,54 @@ const ConfigStep = ({ onNext }) => {
     };
 
     return (
-        <div>
-            <h1>Personnalisation de l'installation</h1>
-            <h2>Templates</h2>
-            {templates.map((template) => (
-                <label key={template}>
-                    <input
-                        type="checkbox"
-                        onChange={() =>
-                            toggleSelection(setSelectedTemplates, template)
+        <div className="indstall-step">
+            <header className="indstall-header">
+                <h1>BLANK THEME</h1>
+                <h2>Personnalisation de l'installation</h2>
+            </header>
+            <div className="indstall-wrapper">
+                <div className="indstall-configs">
+                    <ul className="indstall-configs-list">
+                        <h2 className="install-configs-listTitle">
+                            Templates
+                            <div>
+                                {selectedTemplates.size}/{templates.length}
+                            </div>
+                        </h2>
+                        {templates.map((template) => (
+                            <ListItem
+                                key={template}
+                                item={template}
+                                selected={setSelectedTemplates}
+                                onSelect={toggleSelection}
+                            />
+                        ))}
+                    </ul>
+                    <ul className="indstall-configs-list">
+                        <h2 className="install-configs-listTitle">
+                            Scripts
+                            <div>
+                                {selectedScripts.size}/{scripts.length}
+                            </div>
+                        </h2>
+                        {scripts.map((script) => (
+                            <ListItem
+                                key={script}
+                                item={script}
+                                selected={setSelectedScripts}
+                                onSelect={toggleSelection}
+                            />
+                        ))}
+                    </ul>
+                    <button
+                        onClick={() =>
+                            onNext([...selectedTemplates], [...selectedScripts])
                         }
-                    />
-                    {template}
-                </label>
-            ))}
-            <h2>Scripts</h2>
-            {scripts.map((script) => (
-                <label key={script}>
-                    <input
-                        type="checkbox"
-                        onChange={() =>
-                            toggleSelection(setSelectedScripts, script)
-                        }
-                    />
-                    {script}
-                </label>
-            ))}
-            <button
-                onClick={() =>
-                    onNext([...selectedTemplates], [...selectedScripts])
-                }
-            >
-                Suivant
-            </button>
+                    >
+                        Suivant
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

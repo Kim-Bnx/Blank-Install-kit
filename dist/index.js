@@ -5787,6 +5787,7 @@ const Home = ({ onStart })=>{
         className: "indstall-step",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "h1",
                 children: "BLANK THEME"
             }, void 0, false, {
                 fileName: "src/pages/Home.jsx",
@@ -5803,7 +5804,7 @@ const Home = ({ onStart })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 className: "indstall-button",
                 onClick: onStart,
-                children: "Installer"
+                children: "D\xe9marrer"
             }, void 0, false, {
                 fileName: "src/pages/Home.jsx",
                 lineNumber: 8,
@@ -6014,6 +6015,26 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
+const ListItem = ({ item, selected, onSelect })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                type: "checkbox",
+                onChange: ()=>onSelect(selected, item)
+            }, void 0, false, {
+                fileName: "src/pages/ConfigStep.jsx",
+                lineNumber: 6,
+                columnNumber: 13
+            }, undefined),
+            item
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/ConfigStep.jsx",
+        lineNumber: 5,
+        columnNumber: 9
+    }, undefined);
+};
+_c = ListItem;
 const ConfigStep = ({ onNext })=>{
     _s();
     const [selectedTemplates, setSelectedTemplates] = (0, _react.useState)(new Set());
@@ -6035,86 +6056,150 @@ const ConfigStep = ({ onNext })=>{
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "indstall-step",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "Personnalisation de l'installation"
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+                className: "indstall-header",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        children: "BLANK THEME"
+                    }, void 0, false, {
+                        fileName: "src/pages/ConfigStep.jsx",
+                        lineNumber: 30,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                        children: "Personnalisation de l'installation"
+                    }, void 0, false, {
+                        fileName: "src/pages/ConfigStep.jsx",
+                        lineNumber: 31,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 20,
+                lineNumber: 29,
                 columnNumber: 13
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "Templates"
-            }, void 0, false, {
-                fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 21,
-                columnNumber: 13
-            }, undefined),
-            templates.map((template)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "indstall-wrapper",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "indstall-configs",
                     children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "checkbox",
-                            onChange: ()=>toggleSelection(setSelectedTemplates, template)
-                        }, void 0, false, {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                            className: "indstall-configs-list",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                    className: "install-configs-listTitle",
+                                    children: [
+                                        "Templates",
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            children: [
+                                                selectedTemplates.size,
+                                                "/",
+                                                templates.length
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/pages/ConfigStep.jsx",
+                                            lineNumber: 38,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ConfigStep.jsx",
+                                    lineNumber: 36,
+                                    columnNumber: 25
+                                }, undefined),
+                                templates.map((template)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ListItem, {
+                                        item: template,
+                                        selected: setSelectedTemplates,
+                                        onSelect: toggleSelection
+                                    }, template, false, {
+                                        fileName: "src/pages/ConfigStep.jsx",
+                                        lineNumber: 43,
+                                        columnNumber: 29
+                                    }, undefined))
+                            ]
+                        }, void 0, true, {
                             fileName: "src/pages/ConfigStep.jsx",
-                            lineNumber: 24,
+                            lineNumber: 35,
                             columnNumber: 21
                         }, undefined),
-                        template
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                            className: "indstall-configs-list",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                    className: "install-configs-listTitle",
+                                    children: [
+                                        "Scripts",
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            children: [
+                                                selectedScripts.size,
+                                                "/",
+                                                scripts.length
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/pages/ConfigStep.jsx",
+                                            lineNumber: 54,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ConfigStep.jsx",
+                                    lineNumber: 52,
+                                    columnNumber: 25
+                                }, undefined),
+                                scripts.map((script)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ListItem, {
+                                        item: script,
+                                        selected: setSelectedScripts,
+                                        onSelect: toggleSelection
+                                    }, script, false, {
+                                        fileName: "src/pages/ConfigStep.jsx",
+                                        lineNumber: 59,
+                                        columnNumber: 29
+                                    }, undefined))
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/pages/ConfigStep.jsx",
+                            lineNumber: 51,
+                            columnNumber: 21
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            onClick: ()=>onNext([
+                                    ...selectedTemplates
+                                ], [
+                                    ...selectedScripts
+                                ]),
+                            children: "Suivant"
+                        }, void 0, false, {
+                            fileName: "src/pages/ConfigStep.jsx",
+                            lineNumber: 67,
+                            columnNumber: 21
+                        }, undefined)
                     ]
-                }, template, true, {
+                }, void 0, true, {
                     fileName: "src/pages/ConfigStep.jsx",
-                    lineNumber: 23,
+                    lineNumber: 34,
                     columnNumber: 17
-                }, undefined)),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "Scripts"
+                }, undefined)
             }, void 0, false, {
                 fileName: "src/pages/ConfigStep.jsx",
                 lineNumber: 33,
-                columnNumber: 13
-            }, undefined),
-            scripts.map((script)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "checkbox",
-                            onChange: ()=>toggleSelection(setSelectedScripts, script)
-                        }, void 0, false, {
-                            fileName: "src/pages/ConfigStep.jsx",
-                            lineNumber: 36,
-                            columnNumber: 21
-                        }, undefined),
-                        script
-                    ]
-                }, script, true, {
-                    fileName: "src/pages/ConfigStep.jsx",
-                    lineNumber: 35,
-                    columnNumber: 17
-                }, undefined)),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>onNext([
-                        ...selectedTemplates
-                    ], [
-                        ...selectedScripts
-                    ]),
-                children: "Suivant"
-            }, void 0, false, {
-                fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 45,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/pages/ConfigStep.jsx",
-        lineNumber: 19,
+        lineNumber: 28,
         columnNumber: 9
     }, undefined);
 };
 _s(ConfigStep, "xdbZuA76ua+Lx+RZdktHI2bSNmQ=");
-_c = ConfigStep;
+_c1 = ConfigStep;
 exports.default = ConfigStep;
-var _c;
-$RefreshReg$(_c, "ConfigStep");
+var _c, _c1;
+$RefreshReg$(_c, "ListItem");
+$RefreshReg$(_c1, "ConfigStep");
 
   $parcel$ReactRefreshHelpers$e38c.postlude(module);
 } finally {
