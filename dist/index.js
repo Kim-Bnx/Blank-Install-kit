@@ -6014,23 +6014,30 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _installJson = require("../../data/install.json");
+var _installJsonDefault = parcelHelpers.interopDefault(_installJson);
 var _s = $RefreshSig$();
-const ListItem = ({ item, selected, onSelect })=>{
+const ListItem = ({ item, isChecked, isIndeterminate, onToggle })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+        className: `indstall-configs-listlist-item ${isIndeterminate ? "indeterminate" : ""}`,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                 type: "checkbox",
-                onChange: ()=>onSelect(selected, item)
+                checked: isChecked,
+                onChange: onToggle,
+                ref: (input)=>{
+                    if (input) input.indeterminate = isIndeterminate;
+                }
             }, void 0, false, {
                 fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 6,
+                lineNumber: 11,
                 columnNumber: 13
             }, undefined),
-            item
+            item.name || item
         ]
     }, void 0, true, {
         fileName: "src/pages/ConfigStep.jsx",
-        lineNumber: 5,
+        lineNumber: 6,
         columnNumber: 9
     }, undefined);
 };
@@ -6039,11 +6046,6 @@ const ConfigStep = ({ onNext })=>{
     _s();
     const [selectedTemplates, setSelectedTemplates] = (0, _react.useState)(new Set());
     const [selectedScripts, setSelectedScripts] = (0, _react.useState)(new Set());
-    const templates = [
-        "index_body",
-        "viewtopic_body",
-        "posting_body"
-    ];
     const scripts = [
         "main.js",
         "utils.js"
@@ -6055,6 +6057,27 @@ const ConfigStep = ({ onNext })=>{
             return newSet;
         });
     };
+    const toggleLayout = (layout)=>{
+        const allSelected = layout.templates.every((template)=>selectedTemplates.has(template));
+        const newSelections = new Set(selectedTemplates);
+        if (allSelected) layout.templates.forEach((template)=>newSelections.delete(template));
+        else layout.templates.forEach((template)=>newSelections.add(template));
+        setSelectedTemplates(newSelections);
+    };
+    const toggleTemplate = (template)=>{
+        const newSelections = new Set(selectedTemplates);
+        if (newSelections.has(template)) newSelections.delete(template);
+        else newSelections.add(template);
+        setSelectedTemplates(newSelections);
+    };
+    const isLayoutSelected = (layout)=>layout.templates.every((template)=>selectedTemplates.has(template));
+    const isLayoutIndeterminate = (layout)=>{
+        const selectedCount = layout.templates.filter((template)=>selectedTemplates.has(template)).length;
+        return selectedCount > 0 && selectedCount < layout.templates.length;
+    };
+    const totalTemplates = (0, _installJsonDefault.default).reduce((count, layoutItem)=>{
+        return count + layoutItem.templates.length;
+    }, 0);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "indstall-step",
         children: [
@@ -6065,20 +6088,20 @@ const ConfigStep = ({ onNext })=>{
                         children: "BLANK THEME"
                     }, void 0, false, {
                         fileName: "src/pages/ConfigStep.jsx",
-                        lineNumber: 30,
+                        lineNumber: 84,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                         children: "Personnalisation de l'installation"
                     }, void 0, false, {
                         fileName: "src/pages/ConfigStep.jsx",
-                        lineNumber: 31,
+                        lineNumber: 85,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 29,
+                lineNumber: 83,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -6090,46 +6113,84 @@ const ConfigStep = ({ onNext })=>{
                             className: "indstall-configs-list",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                    className: "install-configs-listTitle",
+                                    className: "indstall-configs-listTitle",
                                     children: [
                                         "Templates",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             children: [
                                                 selectedTemplates.size,
                                                 "/",
-                                                templates.length
+                                                totalTemplates
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/pages/ConfigStep.jsx",
-                                            lineNumber: 38,
+                                            lineNumber: 92,
                                             columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ConfigStep.jsx",
-                                    lineNumber: 36,
+                                    lineNumber: 90,
                                     columnNumber: 25
                                 }, undefined),
-                                templates.map((template)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ListItem, {
-                                        item: template,
-                                        selected: setSelectedTemplates,
-                                        onSelect: toggleSelection
-                                    }, template, false, {
+                                (0, _installJsonDefault.default).map((layout)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "indstall-configs-list",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ListItem, {
+                                                    item: layout.name,
+                                                    isChecked: isLayoutSelected(layout),
+                                                    isIndeterminate: isLayoutIndeterminate(layout),
+                                                    onToggle: ()=>toggleLayout(layout)
+                                                }, void 0, false, {
+                                                    fileName: "src/pages/ConfigStep.jsx",
+                                                    lineNumber: 102,
+                                                    columnNumber: 37
+                                                }, undefined)
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ConfigStep.jsx",
+                                                lineNumber: 101,
+                                                columnNumber: 33
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                                                className: "nested-list indstall-configs-list--nested",
+                                                children: layout.templates.map((template)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ListItem, {
+                                                            item: template,
+                                                            isChecked: selectedTemplates.has(template),
+                                                            onToggle: ()=>toggleTemplate(template)
+                                                        }, void 0, false, {
+                                                            fileName: "src/pages/ConfigStep.jsx",
+                                                            lineNumber: 114,
+                                                            columnNumber: 45
+                                                        }, undefined)
+                                                    }, template.id, false, {
+                                                        fileName: "src/pages/ConfigStep.jsx",
+                                                        lineNumber: 113,
+                                                        columnNumber: 41
+                                                    }, undefined))
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ConfigStep.jsx",
+                                                lineNumber: 111,
+                                                columnNumber: 33
+                                            }, undefined)
+                                        ]
+                                    }, layout.name, true, {
                                         fileName: "src/pages/ConfigStep.jsx",
-                                        lineNumber: 43,
+                                        lineNumber: 97,
                                         columnNumber: 29
                                     }, undefined))
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/ConfigStep.jsx",
-                            lineNumber: 35,
+                            lineNumber: 89,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                             className: "indstall-configs-list",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                    className: "install-configs-listTitle",
+                                    className: "indstall-configs-listTitle",
                                     children: [
                                         "Scripts",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -6140,13 +6201,13 @@ const ConfigStep = ({ onNext })=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/pages/ConfigStep.jsx",
-                                            lineNumber: 54,
+                                            lineNumber: 132,
                                             columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ConfigStep.jsx",
-                                    lineNumber: 52,
+                                    lineNumber: 130,
                                     columnNumber: 25
                                 }, undefined),
                                 scripts.map((script)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ListItem, {
@@ -6155,42 +6216,42 @@ const ConfigStep = ({ onNext })=>{
                                         onSelect: toggleSelection
                                     }, script, false, {
                                         fileName: "src/pages/ConfigStep.jsx",
-                                        lineNumber: 59,
+                                        lineNumber: 137,
                                         columnNumber: 29
                                     }, undefined))
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/ConfigStep.jsx",
-                            lineNumber: 51,
-                            columnNumber: 21
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                            onClick: ()=>onNext([
-                                    ...selectedTemplates
-                                ], [
-                                    ...selectedScripts
-                                ]),
-                            children: "Suivant"
-                        }, void 0, false, {
-                            fileName: "src/pages/ConfigStep.jsx",
-                            lineNumber: 67,
+                            lineNumber: 129,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ConfigStep.jsx",
-                    lineNumber: 34,
+                    lineNumber: 88,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/pages/ConfigStep.jsx",
-                lineNumber: 33,
+                lineNumber: 87,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>onNext([
+                        ...selectedTemplates
+                    ], [
+                        ...selectedScripts
+                    ]),
+                children: "Suivant"
+            }, void 0, false, {
+                fileName: "src/pages/ConfigStep.jsx",
+                lineNumber: 147,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/pages/ConfigStep.jsx",
-        lineNumber: 28,
+        lineNumber: 82,
         columnNumber: 9
     }, undefined);
 };
@@ -6206,7 +6267,10 @@ $RefreshReg$(_c1, "ConfigStep");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh"}],"fghyA":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"f4wnQ","react":"b4tPL","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"62Vgh","../../data/install.json":"dQrvk"}],"dQrvk":[function(require,module,exports,__globalThis) {
+module.exports = JSON.parse('[{"layout":"main","name":"G\xe9n\xe9ral","templates":[{"name":"agreement","description":"Affichage des conditions d\'inscription \xe0 votre forum","id":101},{"name":"buy_credits","description":"Achat participatif","id":105},{"name":"confirm_body","description":"Page type pour les demandes de confirmation","id":103},{"name":"error_body","description":"Page pour les erreurs de saisie","id":106},{"name":"faq_body","description":"Utilis\xe9 pour la FAQ de votre forum","id":107},{"name":"faq_dhtml","description":"Faq version dhtml","id":108},{"name":"footer_widgets","description":"","id":135},{"name":"greeting_popup","description":"Pop up d\'anniversaire","id":109},{"name":"index_body","description":"Page d\'accueil","id":110},{"name":"index_box","description":"Page d\'accueil - affichage des cat\xe9gories","id":111},{"name":"jumpbox","description":"Sauter vers un forum","id":112},{"name":"memberlist_body","description":"Liste des membres","id":113},{"name":"mentions_tooltip","description":"Apparence de la fen\xeatre de pr\xe9visualisation des profils au survol du tag des noms d\'utilisateur","id":134},{"name":"message_body","description":"Message d\'erreur d\'ex\xe9cution","id":114},{"name":"overall_footer_begin","description":"D\xe9but du bas de page","id":115},{"name":"overall_footer_end","description":"Fin du bas de page","id":133},{"name":"overall_header","description":"Haut de page","id":116},{"name":"search_body","description":"Page de recherche","id":118},{"name":"search_results_posts","description":"R\xe9sultats de recherche par messages","id":119},{"name":"search_results_topics","description":"R\xe9sultats de recherche par sujets","id":120},{"name":"search_username","description":"Rechercher un utilisateur","id":121},{"name":"simple_header","description":"Haut de page simple (utilis\xe9 sur quelques pages)","id":123},{"name":"topics_blog_box","description":"Affichage d\'un blog","id":130},{"name":"topics_list_box","description":"Affichage des sujets","id":124},{"name":"viewcomments_body","description":"Affichage des commentaires","id":131},{"name":"viewforum_body","description":"Affichage d\'un forum","id":125},{"name":"viewonline_body","description":"Visualisation de qui est en ligne","id":126},{"name":"viewtopic_body","description":"Affichage d\'un sujet","id":127},{"name":"viewtopic_poll_ballot","description":"Affichage d\'un sondage","id":128},{"name":"viewtopic_poll_result","description":"Affichage du r\xe9sultat d\'un sondage","id":129}]},{"layout":"post","name":"Poster & Messages priv\xe9s","templates":[{"name":"posting_body","description":"Page d\'envoi de messages","id":501},{"name":"posting_confirm_code","description":"Code de confirmation","id":503},{"name":"posting_poll_body","description":"Partie sondage de la page d\'envoi de messages","id":504},{"name":"posting_preview","description":"Partie pr\xe9visualisation de la page d\'envoi de messages","id":505},{"name":"posting_topic_review","description":"Partie revue du sujet de la page d\'envoi de messages","id":509},{"name":"privmsg_topic_review","description":"Revue du sujet","id":510},{"name":"privmsgs_body","description":"Liste des messages priv\xe9s","id":511},{"name":"privmsgs_popup","description":"Popup d\'avertissement de nouveau message priv\xe9","id":512},{"name":"privmsgs_preview","description":"Pr\xe9visualisation d\'un message priv\xe9","id":513},{"name":"privmsgs_read_body","description":"Affichage d\'un message priv\xe9","id":514}]},{"layout":"profil","name":"Profil","templates":[{"name":"profile_add_body","description":"Enregistrement/modification d\'un utilisateur","id":701},{"name":"profile_avatar_gallery","description":"Galerie d\'avatars","id":702},{"name":"profile_edit_signature","description":"Signature","id":704},{"name":"profile_send_email","description":"Envoyer \xe0 un ami","id":705},{"name":"profile_send_pass","description":"Page mot de passe perdu","id":706},{"name":"profile_view_body","description":"Page d\'affichage du profil simple","id":708},{"name":"rpg_sheet","description":"Feuille de personnage","id":710},{"name":"rpg_sheet_edit","description":"Feuille de personnage","id":711}]}]');
+
+},{}],"fghyA":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$d578 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

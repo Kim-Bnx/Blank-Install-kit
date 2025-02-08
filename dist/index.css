@@ -138,23 +138,56 @@
   background: var(--neutralDark);
   border-radius: 10px;
   width: 100%;
+  max-height: 440px;
+  overflow: auto;
 }
 
 .indstall-configs-list {
   flex-direction: column;
   gap: 10px;
-  padding: 20px 30px;
+  padding: 0 30px 20px;
   display: flex;
 
   & + .indstall-configs-list {
     border-top: 1px solid var(--neutral);
   }
+
+  & label {
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+  }
+
+  & input {
+    border: 2px solid var(--neutralDarker);
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.indstall-configs-list--nested {
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
+  display: flex;
 }
 
 .indstall-configs-listTitle {
+  background: var(--neutralDark);
   justify-content: space-between;
-  margin-bottom: 10px;
+  padding: 20px 0 10px;
   font-size: 20px;
   font-weight: 400;
   display: flex;
+  position: sticky;
+  top: 0;
+
+  & div {
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
 }

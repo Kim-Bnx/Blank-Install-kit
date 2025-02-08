@@ -147,22 +147,51 @@
 
 .indstall-configs {
     width: 100%;
+    max-height: 440px;
+    overflow: auto;
     border-radius: 10px;
     background: var(--neutralDark);
 }
 .indstall-configs-list {
     display: flex;
     flex-direction: column;
-    padding: 20px 30px;
+    padding: 0 30px 20px;
     gap: 10px;
     + .indstall-configs-list {
         border-top: 1px solid var(--neutral);
     }
+    label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    input {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        border: 2px solid var(--neutralDarker);
+    }
+}
+.indstall-configs-list--nested {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 10px;
 }
 .indstall-configs-listTitle {
+    position: sticky;
+    background: var(--neutralDark);
+    top: 0;
     display: flex;
     font-size: 20px;
     font-weight: 400;
     justify-content: space-between;
-    margin-bottom: 10px;
+    padding: 20px 0 10px;
+    div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 }
